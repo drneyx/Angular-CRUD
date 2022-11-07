@@ -67,6 +67,20 @@ export class AppComponent implements OnInit {
     })
   }
 
+
+  deleteProduct(id : any){
+    this.api.deleteProduct(id)
+    .subscribe({
+        next:(res) => {
+            alert("Product deleted successfully");
+        },
+        error:(err) => {
+            alert("Errod during deleting");
+        }
+
+    })
+  }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
