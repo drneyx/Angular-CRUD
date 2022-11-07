@@ -20,11 +20,19 @@
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <label for=""><h2>Product Freshness</h2></label>
-    <mat-radio-group>
-        <mat-radio-button *ngFor="let fresh of freshnessList" [value]="fresh">
+    <mat-radio-group  class="example-radio-group">
+        <mat-radio-button class="example-radio-button" *ngFor="let fresh of freshnessList" [value]="fresh">
             {{fresh}}
         </mat-radio-button>
     </mat-radio-group>
+    <mat-form-field appearance="outline">
+        <mat-label>Price</mat-label>
+        <input matInput type="number" placeholder="price">
+    </mat-form-field>
 
+    <mat-form-field appearance="outline">
+        <mat-label>Comment</mat-label>
+        <textarea matInput></textarea>
+    </mat-form-field>
       
 </div>
