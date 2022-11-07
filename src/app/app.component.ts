@@ -16,9 +16,7 @@ export class AppComponent {
 
   openDialog() {
     const dialogRef = this.dialog.open(DialogComponent, {
-      data: {
-        animal: 'panda',
-      }
+      width: '40%'
     });
 
     dialogRef.afterClosed().subscribe(result => {
