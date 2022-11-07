@@ -54,7 +54,7 @@ export class AppComponent implements OnInit {
   }
 
 
-  editProduct(){
+  editProduct(row :  any){
     this.dialog.open(DialogComponent, {
         width: '40%',
         data: row
