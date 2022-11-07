@@ -19,5 +19,12 @@
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
+    <label for=""><h2>Product Freshness</h2></label>
+    <mat-radio-group>
+        <mat-radio-button *ngFor="let fresh of freshnessList" [value]="fresh">
+            {{fresh}}
+        </mat-radio-button>
+    </mat-radio-group>
+
       
 </div>
