@@ -64,7 +64,20 @@ export class DialogComponent implements OnInit {
    }
   }
 
-  updateProduct(){}
+  updateProduct(){
+    this.api.putProduct(this.productForm.value, this.editData.id)
+    .subscribe({
+        next: (res) => {
+            alert("Product updated successfully");
+            this.productForm.reset();
+            this.dialogRef.close("update");
+        },
+        error: (err) => { 
+            alert("Product error");
+        }
+
+    })
+  }
 
 
 }
