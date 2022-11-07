@@ -12,6 +12,7 @@ export class DialogComponent implements OnInit {
 
   freshnessList = ["Brand New", "Second Hand", "Refurbrished"];
   productForm !: FormGroup;
+  actionBtn : string = 'save';
 
   constructor(
     private formBuilder : FormBuilder, 
@@ -30,6 +31,7 @@ export class DialogComponent implements OnInit {
     });
 
    if(this.editData){
+    this.actionBtn = 'Update';
     this.productForm.controls['productName'].setValue(this.editData.productName);
     this.productForm.controls['category'].setValue(this.editData.category);
     this.productForm.controls['freshness'].setValue(this.editData.freshness);
@@ -42,21 +44,27 @@ export class DialogComponent implements OnInit {
   }
 
   addProduct(){
-   if(this.productForm.valid){
-    this.api.postProduct(this.productForm.value)
-    .subscribe({
-      next: (res) => {
-        alert("Product added successfully!");
-        this.productForm.reset();
-        this.dialogRef.close('save');
-
-      },
-      error:(err) =>{
-        alert("Error while adding product");
-      }
-    })
+   if(!this.editData){
+    if(this.productForm.valid){
+        this.api.postProduct(this.productForm.value)
+        .subscribe({
+          next: (res) => {
+            alert("Product added successfully!");
+            this.productForm.reset();
+            this.dialogRef.close('save');
+    
+          },
+          error:(err) =>{
+            alert("Error while adding product");
+          }
+        })
+       }
+   }else{
+    this.updateProduct();
    }
   }
+
+  updateProduct(){}
 
 
 }
