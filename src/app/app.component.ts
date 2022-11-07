@@ -41,12 +41,24 @@ export class AppComponent implements OnInit {
     this.api.getProduct()
     .subscribe({
       next:(res)=>{
-       this.dataSource = new MatTableDataSource(res)
+       this.dataSource = new MatTableDataSource(res);
+       this.dataSource.paginator = this.paginator;
+       this.dataSource.sort = this.sort;
+
       },
       error:(err) =>{
         alert("Erroe while fetching the records")
       }
     })
 
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 }
